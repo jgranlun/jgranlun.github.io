@@ -1,8 +1,8 @@
 # Ramblings about Software Test Automation
 
-Various findings about the fascinating world of software test automation. :eyes: 
+Various findings about the fascinating world of software test automation.
 
-## Robot Framework & Selenium
+### Robot Framework & Selenium
 <I> 18.01.2018 So, how the hell does this thing work?</I>
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. Here are some of the findings which I had whilst trying to automate the front end part of one of our products with Robot Framework and Selenium.
@@ -16,13 +16,13 @@ Webdriver and browser versions:
 - geckodriver 0.23.
 - Mozilla Firefox 61.0.1
 
-### Configuring the used Webdriver options
+#### Configuring the used Webdriver options
 
 There seemed to be contradicting instructions, and the instructions differed depending on what webdriver was used. Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong. But alas, the geckodriver webdriver is not very chatty about it's inner workings by default.
 
 But to enable the debug logs of the webdriver, you have to set the correct debug options for the webdriver! Better get to it then.
 
-#### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
+##### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
 
 This part was really frustrating. Below were some of the things that confused me:
 
@@ -55,7 +55,7 @@ Also note that 'marionette=True' seems to be a mandatory parameter with Geckodri
 WebDriverException: Message: Can't load the profile. Possible firefox version mismatch. You must use GeckoDriver instead for Firefox 48+. Profile Dir: /tmp/tmp1snH2n If you specified a log_file in the FirefoxBinary constructor, check it for details.
 ```
 
-#### Firefox/Geckodriver: Disable the checking of element visibility
+##### Firefox/Geckodriver: Disable the checking of element visibility
 
 If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file, you may get the following error:
 ```
@@ -70,7 +70,7 @@ To do the latter you can use the same code as above,  but this time include also
 ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}        
 ```
 
-### Robot Framework, Selenium and AngularJS pages 
+#### Robot Framework, Selenium and AngularJS pages 
 
 ExtendedSelenium2Library is one of the available Robot Framework libraries that can be used to test web pages implemented with AngularJS.
 
