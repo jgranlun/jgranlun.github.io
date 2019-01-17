@@ -18,9 +18,11 @@ Webdriver and browser versions:
 
 #### Configuring the used Webdriver options
 
-There seemed to be contradicting instructions, and the instructions differed depending on what webdriver was used. Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong. But alas, the geckodriver webdriver is not very chatty about it's inner workings by default.
+There seemed to be contradicting instructions on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used. 
 
-But to enable the debug logs of the webdriver, you have to set the correct debug options for the webdriver! Better get to it then.
+*Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong?* Unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
+
+*But to enable the debug logs of the webdriver, you have to set the correct debug options for the webdriver! Better get to it then.*
 
 ##### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
 
