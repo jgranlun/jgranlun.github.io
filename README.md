@@ -57,7 +57,7 @@ Create Webdriver     Firefox     desired_capabilities=${ff_capabilities}
 ```
 Geckodriver's trace level logging should now appear in the 'geckodriver.log' file. 
 
-That log file is by default is written to the same directory from where Robot Framework is run. So dont go digging into journalctl or any other file located in /var/log/.
+That log file is by default written to the same directory from where Robot Framework is executed. So dont go digging into journalctl or looking at the files located in /var/log/.
 
 You can naturally set logging level to any of log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
 
