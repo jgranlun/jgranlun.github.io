@@ -32,15 +32,15 @@ This part was really frustrating. Below were some of the things that confused me
 
 >So, If I want to enable the webdriver debug logs do I configure the parameter to the webdriver's 'capabilities' or 'desired_capabilities' parameters?  
 
->Should I use the 'moz:firefoxProfile' to set the debug logs on or should I set the 'LoggingPreferences' object which has settings for 'driver', 'server' and 'browser'? 
+>Should I use the 'moz:firefoxProfile' to set the debug logs on or should I set the 'LoggingPreferences' object which has settings for 'driver', 'server' and 'browser' each specifically? 
 
->Should I try to call the Selenium library's functions to set these options, should I try to pass the parameters directly to the Webdriver via SeleniumLibrary's KWs? 
+>Should I try to call the Selenium library's functions to set these options, or should I try to pass the parameters directly to the Webdriver via SeleniumLibrary KWs? 
 
->Can I use the 'Open Browser's firefox_capabilites parameter to get the logs to appear or should I use a Firefox profile to do this? 
+>Can I use the 'Open Browser's 'firefox_capabilites' parameter to enable the debug logs or should I use a custom Firefox profile to do this? 
 
->The Firefox profile is given as a path to the directory where the profile should be found: how do I name the profile if manually generate it?
+>To use a custom Firefox profile, one must give the path the directory where the profile is located to the 'Open Browser' KW: how do I name the profile if manually generate it so that the webdriver correctly loads it?
 
-In any case it seems that what did the trick was to set the moz:firefoxOptions when the Webdriver is created.
+Probably there are multiple ways to enable the bloody debug logs, but what worked for me was to set the 'moz:firefoxOptions' parameter when the Webdriver was created.
 
 ```
 ${log_levels}=    Create Dictionary    level    trace
@@ -50,7 +50,7 @@ ${ff_capabilities}=    Create Dictionary    marionette    ${True}    acceptInsec
 
 Create Webdriver     Firefox     desired_capabilities=${ff_capabilities}
 ```
-Trace level logging should then appear in the 'geckodriver.log' file, which by default is written to the same directory from where Robot Framework is run.
+Trace level logging should then appear in the 'geckodriver.log' file, which by default is written to the same directory from where Robot Framework is run. So dont go digging into journalctl or any other file located in /var/log/.
 
 Possible log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
 
