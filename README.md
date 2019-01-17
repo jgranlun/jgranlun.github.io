@@ -20,6 +20,8 @@ Webdriver and browser versions:
 
 There seemed to be contradicting instructions on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used. 
 
+Also it seemed that no matter which instructions I followed, and whatever parameters I updated, there was no difference in the webdriver's behaviour. So clearly it seemed that I was configuring the parameters incorrectly and the webdriver was ignoring my custom parameter values.
+
 *Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong?* 
 
 Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
