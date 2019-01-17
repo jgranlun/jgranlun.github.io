@@ -88,7 +88,6 @@ ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    ma
 ExtendedSelenium2Library is one of the available Robot Framework libraries that can be used to test web pages implemented with AngularJS.
 
 Whilst using the latest version (0.9.2) of [ExtendedSelenium2Library](https://pypi.org/project/robotframework-extendedselenium2library/) and chromedriver I was getting the following error when trying to input text with 'Input Text' KW:
-
 ```
 JavascriptException: Message: javascript error: $ is not defined
 JavaScript stack:
@@ -105,7 +104,7 @@ ReferenceError: $ is not defined
   (Session info: chrome=71.0.3578.98)
   (Driver info: chromedriver=2.45.615279 (12b89733300bd268cff3b78fc76cb8f3a7cc44e5),platform=Linux 4.15.0-29-generic x86_64)
 ```
-The error is a bit odd, since for some elements 'Input Text' works fine, but for some elements this error appears. :confused:
+The error is a bit odd, since for some elements 'Input Text' works fine, but for some elements this error appears.
 
 Anyways the error seems to be coming from the used webdriver (in this case chromedriver), so one alternative is to switch to using geckodriver (Firefox) which does not crash in these text inputs. 
 
