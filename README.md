@@ -38,9 +38,9 @@ This part was really frustrating. Below were some of the things that confused me
 
 >Can I use the 'Open Browser's 'firefox_capabilites' parameter to enable the debug logs or should I use a custom Firefox profile to do this? 
 
->To use a custom Firefox profile, one must give the path the directory where the profile is located to the 'Open Browser' KW: how do I name the profile if manually generate it so that the webdriver correctly loads it?
+>To use a custom Firefox profile, one must give the path the directory where the profile is located, as a parameter to the 'Open Browser' KW. How should I name the firefox profile file if manually generate it, so that the webdriver correctly finds it?
 
-Probably there are multiple ways to enable the bloody debug logs, but what worked for me was to set the 'moz:firefoxOptions' parameter when the Webdriver was created.
+Probably there are multiple ways to enable the (bloody) debug logs, but what worked for me was to set the 'moz:firefoxOptions' parameter when the Webdriver was created.
 
 ```
 ${log_levels}=    Create Dictionary    level    trace
