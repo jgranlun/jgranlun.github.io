@@ -3,25 +3,16 @@
 Various findings about the fascinating world of software test automation.
 
 
-## Robot Framework & Selenium
+## Robot Framework & Selenium, a.k.a the Webdriver option configuration hell
 *18.01.2018*
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. 
 
-Here are some of the findings which I had whilst trying to automate the front end part of one of our products with Robot Framework and Selenium.
+Whilst trying to automate the "upload file" functionality found on one of our front-end web pages, I stumbled on a problem that was a show stopper and can be considered as a feature of the Mozilla Gecko webdriver (more on this later). 
 
-I was using the following versions of Robot Libraries:
-- robotframework-selenium2library==1.8.0
-- robotframework-seleniumlibrary==3.3.0
-- selenium==3.141.0
+To get around this problem (without switching back to using Google Chrome and chromedriver), I needed to configure one custom parameter to the Geckodriver options. *Can't be that hard, right?* Well - I didn't find it be that easy either.
 
-Webdriver and browser versions:
-- geckodriver 0.23.
-- Mozilla Firefox 61.0.1
-
-### How to configure the used Webdriver options
-
-There seemed to be contradicting instructions on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used. 
+There seemed to be contradicting instructions floating on the Web on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used.
 
 Also it seemed that no matter which instructions I followed, and whatever parameters I updated, there was no difference in the webdriver's behaviour. So clearly it seemed that I was configuring the parameters incorrectly and the webdriver was ignoring my custom parameter values.
 
@@ -31,7 +22,7 @@ Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about i
 
 *But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. Wasn't that the problem  I was trying to solve with goddamn the debug logs in the first place?!*
 
-#### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
+### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
 
 This part was really frustrating. Below were some of the things that confused me:
 
@@ -66,13 +57,15 @@ Also note that 'marionette=True' seems to be a mandatory parameter with Geckodri
 WebDriverException: Message: Can't load the profile. Possible firefox version mismatch. You must use GeckoDriver instead for Firefox 48+. Profile Dir: /tmp/tmp1snH2n If you specified a log_file in the FirefoxBinary constructor, check it for details.
 ```
 
-#### Firefox/Geckodriver: Disable the checking of element visibility
+### Firefox/Geckodriver: Disable the checking of element visibility
 
 If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file, you may get the following error:
 ```
 ElementNotInteractableException: Message: Element <input ... type="file"> is not reachable by keyboard
 ```
-This was the original issue why I went digging into the issue of how to set custom parameters to the webdriver. The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
+**Now This was the original issue why I went digging into the issue of how to set custom parameters to the webdriver.** 
+
+The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
 
 As a workaround you can either:
 - switch to using chromedriver *or* 
@@ -84,6 +77,8 @@ ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    ma
 ```
 
 ### Robot Framework, Selenium and AngularJS pages 
+
+So the aforementioned challenges were with Mozilla Geckodriver, but it's not all that rosy either on the Google Chrome side either.
 
 ExtendedSelenium2Library is one of the available Robot Framework libraries that can be used to test web pages implemented with AngularJS.
 
@@ -110,3 +105,11 @@ Anyways the error seems to be coming from the used webdriver (in this case chrom
 
 Another workaround is to downgrade to 'ExtendedSelenium2Library==0.4.13' version, which does not have this issue. Note though that version 0.4.13 is quite old and some Selenium2Library KWs are missing from that version. For example 'Scroll Element Into View' KW is not found in that version.
 
+Finally here are the library versions I was using for reference
+- robotframework-selenium2library==1.8.0
+- robotframework-seleniumlibrary==3.3.0
+- selenium==3.141.0
+
+And the used webdriver and browser versions were:
+- geckodriver 0.23.
+- Mozilla Firefox 61.0.1
