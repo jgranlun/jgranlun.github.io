@@ -10,7 +10,7 @@ I must admit that I am not that familiar (yet) with Selenium and HTML based UI t
 
 Whilst trying to automate the "upload file" functionality found on one of our front-end web pages, I stumbled on a problem that was a show stopper and can be considered as a feature of the Mozilla Gecko webdriver (more on this later). 
 
-To get around this problem (without switching back to using Google Chrome and chromedriver), I needed to configure one custom parameter to the Geckodriver options. *Can't be that hard, right?* Well - I didn't find it be that easy either.
+To get around this problem (without switching back to using Google Chrome and chromedriver), I needed to configure one custom parameter to the Geckodriver options. *Can't be that hard, right?* Well - I didn't find it to be that easy either.
 
 There seemed to be contradicting instructions floating on the Web on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used.
 
