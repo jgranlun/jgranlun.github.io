@@ -29,7 +29,7 @@ Also it seemed that no matter which instructions I followed, and whatever parame
 
 Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
 
-*But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. Wasn't that the problem in the first place I was trying to solve with goddamn the debug logs!.*
+*But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. Wasn't that the problem  I was trying to solve with goddamn the debug logs in the first place?!.*
 
 ##### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
 
