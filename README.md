@@ -30,7 +30,7 @@ Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about i
 
 This part was really frustrating. Below were some of the things that confused me:
 
->So, If I want to get the debug logs do I configure the parameter to the browser's 'capabilities' or 'desired_capabilities' parameters? 
+>So, If I want to enable the webdriver debug logs do I configure the parameter to the webdriver's 'capabilities' or 'desired_capabilities' parameters?  
 
 >Should I use the 'moz:firefoxProfile' to set the debug logs on or should I set the 'LoggingPreferences' object which has settings for 'driver', 'server' and 'browser'? 
 
