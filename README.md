@@ -1,6 +1,6 @@
 # Ramblings about Software Test Automation
 
-Various findings about the fascinating world of software test automation.
+Various findings about the *fascinating* world of software test automation.
 
 
 ## Robot Framework & Selenium, a.k.a the Webdriver option configuration hell
