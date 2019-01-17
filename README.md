@@ -2,8 +2,8 @@
 
 Various findings about the fascinating world of software test automation.
 
-### Robot Framework & Selenium
 *18.01.2018*
+### Robot Framework & Selenium
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. Here are some of the findings which I had whilst trying to automate the front end part of one of our products with Robot Framework and Selenium.
 
