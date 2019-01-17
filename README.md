@@ -22,7 +22,7 @@ Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about i
 
 *But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. Wasn't that the problem  I was trying to solve with goddamn the debug logs in the first place?!*
 
-### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
+### How to enable Mozilla Geckodriver trace logs via Robot Framework and Selenium:
 
 This part was really frustrating. Below were some of the things that confused me:
 
@@ -57,9 +57,9 @@ Also note that 'marionette=True' seems to be a mandatory parameter with Geckodri
 WebDriverException: Message: Can't load the profile. Possible firefox version mismatch. You must use GeckoDriver instead for Firefox 48+. Profile Dir: /tmp/tmp1snH2n If you specified a log_file in the FirefoxBinary constructor, check it for details.
 ```
 
-### Firefox/Geckodriver: Disable the checking of element visibility
+### How to disable the Mozilla Geckodriver element visibility check
 
-If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file, you may get the following error:
+If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file with Mozilla Geckodriver, you may get the following error:
 ```
 ElementNotInteractableException: Message: Element <input ... type="file"> is not reachable by keyboard
 ```
@@ -76,7 +76,7 @@ To do the latter you can use the same code as previously above, but this time in
 ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}        
 ```
 
-### Robot Framework, Selenium and AngularJS pages 
+### Robot Framework, Selenium, AngularJS pages and Chrome
 
 So the aforementioned challenges were with Mozilla Geckodriver, but it's not all that rosy either on the Google Chrome side either.
 
