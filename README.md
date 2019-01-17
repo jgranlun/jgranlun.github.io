@@ -3,7 +3,7 @@
 Various findings about the fascinating world of software test automation.
 
 ### Robot Framework & Selenium
-<I> 18.01.2018 So, how the hell does this thing work?</I>
+*18.01.2018 So, how the hell does this thing work?*
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. Here are some of the findings which I had whilst trying to automate the front end part of one of our products with Robot Framework and Selenium.
 
