@@ -20,7 +20,9 @@ Webdriver and browser versions:
 
 There seemed to be contradicting instructions on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used. 
 
-*Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong?* Unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
+*Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong?* 
+
+Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
 
 *But to enable the debug logs of the webdriver, you have to set the correct debug options for the webdriver! Better get to it then.*
 
