@@ -19,7 +19,7 @@ Webdriver and browser versions:
 - geckodriver 0.23.
 - Mozilla Firefox 61.0.1
 
-#### Configuring the used Webdriver options
+#### How to configure the used Webdriver options
 
 There seemed to be contradicting instructions on how one can configure options to the used webdriver, and the instructions differed depending on what webdriver was used. 
 
