@@ -55,11 +55,13 @@ ${ff_capabilities}=    Create Dictionary    marionette    ${True}    acceptInsec
 
 Create Webdriver     Firefox     desired_capabilities=${ff_capabilities}
 ```
-Trace level logging should then appear in the 'geckodriver.log' file, which by default is written to the same directory from where Robot Framework is run. So dont go digging into journalctl or any other file located in /var/log/.
+Geckodriver's trace level logging should now appear in the 'geckodriver.log' file. 
 
-Possible log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
+That log file is by default is written to the same directory from where Robot Framework is run. So dont go digging into journalctl or any other file located in /var/log/.
 
-Also note that 'marionette=True' seems to be a mandatory parameter with Geckodriver. If you do not have it set you will see the following error:
+You can naturally set logging level to any of log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
+
+Also note that 'marionette=True' seems to be a mandatory parameter with Geckodriver. If you do not have it set you will see the following somewhat confusing error:
 ```
 WebDriverException: Message: Can't load the profile. Possible firefox version mismatch. You must use GeckoDriver instead for Firefox 48+. Profile Dir: /tmp/tmp1snH2n If you specified a log_file in the FirefoxBinary constructor, check it for details.
 ```
@@ -70,11 +72,13 @@ If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file, 
 ```
 ElementNotInteractableException: Message: Element <input ... type="file"> is not reachable by keyboard
 ```
-This issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works since it is not (alledgedly) following specifications.
+This was the original issue why I went digging into the issue of how to set custom parameters to the webdriver. The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
 
-So as a workaround you can either switch to using chromedriver, or configure the 'moz:webdriverClick' parameter to be 'False' with Geckodriver. 
+As a workaround you can either:
+- switch to using chromedriver *or* 
+- continue using Geckodriver, but configure the 'moz:webdriverClick' parameter to be 'False' 
 
-To do the latter you can use the same code as above,  but this time include also the 'moz:webdriverClick' parameter:
+To do the latter you can use the same code as previously above, but this time include also the 'moz:webdriverClick' parameter:
 ```
 ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}        
 ```
