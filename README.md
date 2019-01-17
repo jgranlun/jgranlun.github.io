@@ -1,20 +1,43 @@
-# Robot Framework & Selenium
+# Ramblings about Software Test Automation
 
-There are a bunch of confusing instructions are floating around the use of Selenium and Robot Framework. 
+Various findings about the fascinating world of software test automation. :eyes: 
 
-For example the way how used options are configured to underlying webdriver was a very confusing. Also I could not find any examples online how to do it with Robot Framework.
+## Robot Framework & Selenium
+<I> 18.01.2018 So, how the hell does this thing work?</I>
 
-So I listed here some examples which may be helpful to other people.
+I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. Here are some of the findings which I had whilst trying to automate the front end part of one of our products with Robot Framework and Selenium.
 
-Info is valid at least for the following SW releases:
+I was using the following versions of Robot Libraries:
 - robotframework-selenium2library==1.8.0
 - robotframework-seleniumlibrary==3.3.0
 - selenium==3.141.0
+
+Webdriver and browser versions:
 - geckodriver 0.23.
 - Mozilla Firefox 61.0.1
 
-## Firefox & Geckodriver 
-### Enable Firefox/Geckodriver trace logs via Robot Framework and Selenium:
+### Configuring the used Webdriver options
+
+There seemed to be contradicting instructions, and the instructions differed depending on what webdriver was used. Maybe if I look the webdriver's debug logs, I can see what I'm doing wrong. But alas, the geckodriver webdriver is not very chatty about it's inner workings by default.
+
+But to enable the debug logs of the webdriver, you have to set the correct debug options for the webdriver! Better get to it then.
+
+#### Firefox/Geckodriver: enable Geckodriver trace logs via Robot Framework and Selenium:
+
+This part was really frustrating. Below were some of the things that confused me:
+
+>So, If I want to get the debug logs do I configure the parameter to the browser's 'capabilities' or 'desired_capabilities' parameters? 
+
+>Should I use the 'moz:firefoxProfile' to set the debug logs on or should I set the 'LoggingPreferences' object which has settings for 'driver', 'server' and 'browser'? 
+
+>Should I try to call the Selenium library's functions to set these options, should I try to pass the parameters directly to the Webdriver via SeleniumLibrary's KWs? 
+
+>Can I use the 'Open Browser's firefox_capabilites parameter to get the logs to appear or should I use a Firefox profile to do this? 
+
+>The Firefox profile is given as a path to the directory where the profile should be found: how do I name the profile if manually generate it?
+
+In any case it seems that what did the trick was to set the moz:firefoxOptions when the Webdriver is created.
+
 ```
 ${log_levels}=    Create Dictionary    level    trace
 ${log_settings}=    Create Dictionary    log    ${log_levels}
@@ -32,7 +55,7 @@ Also note that 'marionette=True' seems to be a mandatory parameter with Geckodri
 WebDriverException: Message: Can't load the profile. Possible firefox version mismatch. You must use GeckoDriver instead for Firefox 48+. Profile Dir: /tmp/tmp1snH2n If you specified a log_file in the FirefoxBinary constructor, check it for details.
 ```
 
-### To disable the checking of element visibility with Firefox / Geckodriver
+#### Firefox/Geckodriver: Disable the checking of element visibility
 
 If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file, you may get the following error:
 ```
@@ -47,9 +70,7 @@ To do the latter you can use the same code as above,  but this time include also
 ${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}        
 ```
 
-## Chrome 
-
-### Testing AngularJS pages with Chrome and with ExtendedSelenium2Library
+### Robot Framework, Selenium and AngularJS pages 
 
 ExtendedSelenium2Library is one of the available Robot Framework libraries that can be used to test web pages implemented with AngularJS.
 
@@ -71,7 +92,7 @@ ReferenceError: $ is not defined
   (Session info: chrome=71.0.3578.98)
   (Driver info: chromedriver=2.45.615279 (12b89733300bd268cff3b78fc76cb8f3a7cc44e5),platform=Linux 4.15.0-29-generic x86_64)
 ```
-The error is a bit odd, since for some elements 'Input Text' works fine, but for some elements this error appears.
+The error is a bit odd, since for some elements 'Input Text' works fine, but for some elements this error appears. :confused:
 
 Anyways the error seems to be coming from the used webdriver (in this case chromedriver), so one alternative is to switch to using geckodriver (Firefox) which does not crash in these text inputs. 
 
