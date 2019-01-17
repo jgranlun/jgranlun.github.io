@@ -2,7 +2,7 @@
 
 There are a bunch of confusing instructions are floating around the use of Selenium and Robot Framework. 
 
-For example the way how to configure options to the used webdriver was a very confusing to me and I could not find any examples how to do this with Robot framework.
+For example the way how used options are configured to underlying webdriver was a very confusing. Also I could not find any examples online how to do it with Robot Framework.
 
 So I listed here some examples which may be helpful to other people.
 
@@ -10,7 +10,7 @@ Info is valid at least for the following SW releases:
 - robotframework-selenium2library==1.8.0
 - robotframework-seleniumlibrary==3.3.0
 - selenium==3.141.0
-- geckodriver 0.23.0
+- geckodriver 0.23.
 - Mozilla Firefox 61.0.1
 
 ## Firefox & Geckodriver 
@@ -23,7 +23,7 @@ ${ff_capabilities}=    Create Dictionary    marionette    ${True}    acceptInsec
 
 Create Webdriver     Firefox     desired_capabilities=${ff_capabilities}
 ```
-Trace level logging should then appear in the 'geckodriver.log' file, which by default is written to the same directory from where Robot is run.
+Trace level logging should then appear in the 'geckodriver.log' file, which by default is written to the same directory from where Robot Framework is run.
 
 Possible log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
 
