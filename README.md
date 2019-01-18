@@ -55,7 +55,7 @@ If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file w
 ```
 ElementNotInteractableException: Message: Element <input ... type="file"> is not reachable by keyboard
 ```
-**Now This was the original issue why I went digging into the issue of how to set custom parameters to the webdriver.** 
+**Now this was the original issue why I went digging into the issue of how to set custom parameters to the webdriver.** 
 
 The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
 
@@ -63,10 +63,7 @@ As a workaround you can either:
 - switch to using chromedriver *or* 
 - continue using Geckodriver, but configure the 'moz:webdriverClick' parameter to be 'False' 
 
-To do the latter you can use the same code as previously above, but this time include also the 'moz:webdriverClick' parameter:
-```
-${ff_capabilities}=    Create Dictionary    moz:webdriverClick    ${False}    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}        
-```
+To do the latter you can use [this example code](https://github.com/jgranlun/jgranlun.github.io/issues/2)
 
 ### Robot Framework, Selenium, AngularJS pages and Chrome
 
@@ -104,4 +101,7 @@ Finally here are the library versions I was using for reference
 
 And the used webdriver and browser versions were:
 - geckodriver 0.23.
+- ChromeDriver 2.45.615279
 - Mozilla Firefox 61.0.1
+- Google Chrome 71.0.3578.98
+
