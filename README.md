@@ -8,7 +8,7 @@ Various findings about the *fascinating* world of software test automation.
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. 
 
-Whilst trying to automate the "upload file" functionality found on one of our front-end web pages, I stumbled on a problem that was a show stopper and can be considered as a feature of the Mozilla Gecko webdriver (more on this later). 
+Whilst trying to automate the "upload file" functionality found on one of our front-end web pages, I stumbled on a problem that was a show stopper and can be considered as a feature of the Mozilla Gecko webdriver ([more on this later](https://github.com/jgranlun/jgranlun.github.io/blob/master/README.md#how-to-disable-the-mozilla-geckodriver-element-visibility-check)). 
 
 To get around this problem (without switching back to using Google Chrome and chromedriver), I needed to configure one custom parameter to the Geckodriver options. *Can't be that hard, right?* Well - I didn't find it to be that easy either.
 
