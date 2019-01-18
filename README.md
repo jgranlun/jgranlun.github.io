@@ -38,19 +38,11 @@ This part was really frustrating. Below were some of the things that confused me
 
 Probably there are multiple ways to enable the *(bloody)* debug logs, but what worked for me was to set the 'moz:firefoxOptions: {log {level: trace}}' parameter when the Webdriver was created.
 
-```
-${log_levels}=    Create Dictionary    level    trace
-${log_settings}=    Create Dictionary    log    ${log_levels}
+Example solution is listed [here](https://github.com/jgranlun/jgranlun.github.io/issues/1)
 
-${ff_capabilities}=    Create Dictionary    marionette    ${True}    acceptInsecureCerts    ${True}    browserName    firefox     moz:firefoxOptions    ${log_settings}
-
-Create Webdriver     Firefox     desired_capabilities=${ff_capabilities}
-```
 Geckodriver's trace level logging should now appear in the 'geckodriver.log' file. 
 
 That log file is by default written to the same directory from where Robot Framework is executed. So dont go digging into journalctl or looking at the files located in /var/log/.
-
-You can naturally set logging level to any of log levels are listed [here](https://firefox-source-docs.mozilla.org/testing/geckodriver/geckodriver/TraceLogs.html).
 
 Also note that 'marionette=True' seems to be a mandatory parameter with Geckodriver. If you do not have it set you will see the following somewhat confusing error:
 ```
