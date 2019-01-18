@@ -55,7 +55,7 @@ If you try to use the SeleniumLibrary's 'Choose File' keyword to upload a file w
 ```
 ElementNotInteractableException: Message: Element <input ... type="file"> is not reachable by keyboard
 ```
-**Now this was the original issue why I went digging into the issue of how to set custom parameters to the webdriver.** 
+*Now this was the original issue why I went digging into the issue on of how to set custom parameters to the webdriver.* 
 
 The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
 
