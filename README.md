@@ -20,7 +20,7 @@ Also it seemed that no matter which instructions I followed, and whatever parame
 
 Yeah - good idea unfortunately, geckodriver webdriver is not very chatty about it's inner workings by default.
 
-*But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. Wasn't that the problem  I was trying to solve with goddamn the debug logs in the first place?!*
+But to enable the debug logs of the webdriver, you have to set the correct options to the webdriver. *Wasn't that the problem  I was trying to solve with goddamn the debug logs in the first place?!*
 
 ### How to enable Mozilla Geckodriver trace logs via Robot Framework and Selenium:
 
@@ -57,7 +57,7 @@ ElementNotInteractableException: Message: Element <input ... type="file"> is not
 ```
 *Now this was the original issue why I went digging into the issue on of how to set custom parameters to the webdriver.* 
 
-The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since it is not (alledgedly) following specifications.
+The issue is explained in detail [here](https://github.com/mozilla/geckodriver/issues/1173). Note that it is Geckodriver specific issue, chromedriver works fine, since chromedriver is not (alledgedly) following specifications.
 
 As a workaround you can either:
 - switch to using chromedriver *or* 
@@ -92,7 +92,7 @@ The error is a bit odd, since for some elements 'Input Text' works fine, but for
 
 Anyways the error seems to be coming from the used webdriver (in this case chromedriver), so one alternative is to switch to using geckodriver (Firefox) which does not crash in these text inputs. 
 
-Another workaround is to downgrade to 'ExtendedSelenium2Library==0.4.13' version, which does not have this issue. Note though that version 0.4.13 is quite old and some Selenium2Library KWs are missing from that version. For example 'Scroll Element Into View' KW is not found in that version.
+Another workaround is to downgrade to 'ExtendedSelenium2Library==0.4.13' version, which does not have this issue. Note though that version 0.4.13 is quite old and some of the newer Selenium KWs are missing from that version. For example 'Scroll Element Into View' KW is not found in that version.
 
 Finally here are the library versions I was using for reference
 - robotframework-selenium2library==1.8.0
