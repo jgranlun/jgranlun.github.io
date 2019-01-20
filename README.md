@@ -4,7 +4,7 @@ Various findings about the *fascinating* world of software test automation.
 
 
 ## Robot Framework & Selenium, a.k.a the Webdriver option configuration hell
-*18.01.2018*
+*18.01.2019*
 
 I must admit that I am not that familiar (yet) with Selenium and HTML based UI testing in general. 
 
